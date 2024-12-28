@@ -6,11 +6,6 @@ def get_mask_card_number(numbers: str) -> str:
     return new_mask_card
 
 
-# numbers = 178652121566
-# mask_numbers = get_mask_card_number(numbers)
-# print(mask_numbers)
-
-
 # Функцию маскировки номера банковского счета
 def get_mask_account(mask_account: str) -> str:
     """Принимает на вход номер счета в виде числа и возвращает маску номера по правилу **XXXX"""
