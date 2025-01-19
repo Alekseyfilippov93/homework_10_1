@@ -15,7 +15,7 @@ def test_get_mask_card_number() -> None:
 
 
 def test_get_mask_account() -> None:
-    assert get_mask_account("64686473678894779589") == "6468 **9589"
+    assert get_mask_account("64686473678894779599") == "6468 **9599"
     assert get_mask_account("88888888888888888888") == "8888 **8888"
     try:
         get_mask_account("566")
