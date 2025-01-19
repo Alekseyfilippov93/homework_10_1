@@ -20,3 +20,8 @@ def get_date(date_str: str) -> str:
     "ДД.ММ.ГГГГ"("11.03.2024")."""
     date_new = date_str[8:10] + "." + date_str[5:7] + "." + date_str[0:4]
     return date_new
+
+
+if __name__ == "__main__":
+    print(mask_account_card("Maestro 7000792289606361"))
+    print(get_date("2024-03-11T02:26:18.671407"))
