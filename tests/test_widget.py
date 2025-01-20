@@ -19,7 +19,6 @@ def test_mask_account_card(card, result_1):
 def test_get_date(date_1):
     assert get_date("2024-03-11T02:26:18.671407") == date_1
     try:
-        get_date("2024-03-T02:26:18.671407")
-        print("День недели отсутствует")
-    except IndexError:
-        pass
+        get_date("T02:26:18.671")
+    except ValueError as error:
+        print(error)

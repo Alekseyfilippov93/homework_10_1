@@ -60,24 +60,21 @@ state соответствует указанному значению.
 ```
 def test_get_mask_card_number():
     assert get_mask_card_number("8990922113665229") == "8990 92** **** 5229"
-    assert get_mask_card_number("1111111111115555") == "1111 11** **** 5555"
-
+    assert get_mask_card_number("7861315131235651") == "7861 31** **** 5651"
     try:
-        get_mask_card_number('566')
-        print("Неверный ввод карты")
-    except IndexError:
-        pass
+        get_mask_card_number("44648")
+    except ValueError as error:
+        print(error)
 ```
 ```
 def test_get_mask_account():
-    assert get_mask_account("64686473678894779589") == "6468 **9589"
+    assert get_mask_account("64686473678894779599") == "6468 **9599"
     assert get_mask_account("88888888888888888888") == "8888 **8888"
-
     try:
-        get_mask_account('566')
+        get_mask_account("566")
         print("Неверный ввод счета")
-    except IndexError:
-        pass 
+    except ValueError:
+        pass
 ```
 ```
 @pytest.mark.parametrize(
@@ -92,13 +89,12 @@ def test_mask_account_card(card, result_1):
     assert mask_account_card(card) == result_1
 ```
 ```
-def test_get_date(date_1):
+ef test_get_date(date_1):
     assert get_date("2024-03-11T02:26:18.671407") == date_1
     try:
-        get_date("2024-03-T02:26:18.671407")
-        print("День недели отсутствует")
-    except IndexError:
-        pass
+        get_date("T02:26:18.671")
+    except ValueError as error:
+        print(error)
 ```
 ```
 def test_filter_by_state(dict_1):
