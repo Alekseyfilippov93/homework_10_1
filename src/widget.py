@@ -18,5 +18,12 @@ def mask_account_card(card: Union[str]) -> str:
 def get_date(date_str: str) -> str:
     """принимает на вход строку с датой в формате "2024-03-11T02:26:18.671407" и возвращает строку с датой в формате
     "ДД.ММ.ГГГГ"("11.03.2024")."""
+    if len(date_str) < 19:
+        raise ValueError("неверный формат даты")
     date_new = date_str[8:10] + "." + date_str[5:7] + "." + date_str[0:4]
     return date_new
+
+
+if __name__ == "__main__":
+    print(mask_account_card("Maestro 7000792289606361"))
+    print(get_date("T02:26:18.671"))
