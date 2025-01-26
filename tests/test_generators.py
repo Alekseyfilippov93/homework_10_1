@@ -1,8 +1,7 @@
-import pytest
 from src.generators import filter_by_currency
 from src.generators import transaction_descriptions
 from src.generators import card_number_generator
-from typing import Any
+import pytest
 
 
 # Функции для проверки тестов
@@ -88,3 +87,21 @@ def test_transaction_descriptions():
     # Проверка пустого списка
     descriptions = list(transaction_descriptions([]))
     assert descriptions == [], "Ошибка: Нет данных"
+
+
+def test_card_number_generator():
+    card_numbers = [
+        "0000 0000 0000 0001",
+        "0000 0000 0000 0002",
+        "0000 0000 0000 0003",
+        "0000 0000 0000 0004",
+        "0000 0000 0000 0005",
+        "0000 0000 0000 0006",
+    ]
+    card_numbers_new = list(card_number_generator(1, 6))
+    assert card_numbers_new == card_numbers
+
+    # Проверка крайних значений диапазона
+    assert list(card_number_generator(1, 1)) == ["0000 0000 0000 0001"]
+    assert list(card_number_generator(6, 6)) == ["0000 0000 0000 0006"]
+    assert list(card_number_generator(7, 7)) == ["0000 0000 0000 0007"]
