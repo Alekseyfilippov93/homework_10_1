@@ -165,9 +165,10 @@ def test_transaction_descriptions(transactions):
         "Перевод организации",
     ]
     
-    # Проверка пустого списка
+# Проверка пустого списка
+def test_transactions_empty():
     descriptions = list(transaction_descriptions([]))
-    assert descriptions == [], "Ошибка: Нет данных"
+    assert descriptions == [], "Ошибка: должен быть пустой результат"
 ```
 ```
 def test_card_number_generator():
