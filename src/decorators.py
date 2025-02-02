@@ -3,7 +3,6 @@ from functools import wraps
 
 def log(filename=None):
     """Декоратор логирования функций, автоматически логирует начало и конец, и результаты и возникшие ошибки"""
-
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -28,20 +27,20 @@ def log(filename=None):
 
 
 # Пример использования декоратора
-@log(filename="mylog.txt")
-def my_function(x, y):
-    """Функция суммирует 2 числа"""
-    return x + y
+#@log(filename="mylog.txt")
+#def my_function(x, y):
+ #   """Функция суммирует 2 числа"""
+ #   return x + y
 
 # Успешный вызов проверка
-my_function(4, 5)
+#my_function(4, 5)
 
 
 # Пример функции с ошибкой, где на ноль делить нельзя
-@log(filename="mylog.txt")
-def my_error_function(x, y):
-    return x / y
+#@log(filename="mylog.txt")
+#def my_error_function(x, y):
+ #   return x / y
 
-my_error_function(1, 0)
+#my_error_function(1, 0)
 
 
