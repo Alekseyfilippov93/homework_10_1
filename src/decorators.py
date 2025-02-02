@@ -26,22 +26,3 @@ def log(filename: Optional[str] = None) -> Callable:
         return wrapper
 
     return decorator
-
-
-# Пример использования декоратора
-@log(filename="mylog.txt")
-def my_function(x, y):
-    """Функция суммирует 2 числа"""
-    return x + y
-
-
-# Успешный вызов проверка
-my_function(4, 7)
-
-
-# Пример функции с ошибкой, где на ноль делить нельзя
-# @log(filename="mylog.txt")
-# def my_error_function(x, y):
-#   return x / y
-
-# my_error_function(1, 0)

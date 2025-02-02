@@ -147,6 +147,7 @@ def test_filter_by_state(dict_1):
 def test_sort_by_date(input_data, expected_output):
     assert sort_by_date(input_data) == expected_output
 ```
+
 ```
 def test_filter_by_currency(transactions):
     usd_transactions = filter_by_currency(transactions, "USD")
@@ -154,6 +155,7 @@ def test_filter_by_currency(transactions):
     assert usd_transactions == usd_transactions
     assert usd_transactions != usd_transactions_1 
 ```
+
 ```
 def test_transaction_descriptions(transactions):
     descriptions = list(transaction_descriptions(transactions))
@@ -170,6 +172,7 @@ def test_transactions_empty():
     descriptions = list(transaction_descriptions([]))
     assert descriptions == [], "Ошибка: должен быть пустой результат"
 ```
+
 ```
 def test_card_number_generator():
     card_numbers = [
@@ -314,3 +317,71 @@ for card_number in card_number_generator(1, 6):
 0000 0000 0000 0006
 ```
 
+### Использование функций из модуля decorators.py
+
+Декоратор log, который будет автоматически логировать начало и конец выполнения функции, а также ее результаты или
+возникшие ошибки.
+Декоратор должен принимать необязательный аргумент filename, который определяет, куда будут записываться логи (в файл
+или в консоль)
+
+**def log**
+
+``` 
+def log(filename: Optional[str] = None) -> Callable:
+    """Декоратор логирования функций, автоматически логирует начало и конец, и результаты и возникшие ошибки"""
+
+    def decorator(func: Callable) -> Callable:
+        @wraps(func)
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
+            function_name = func.__name__
+            try:
+                result = func(*args, **kwargs)
+                log_message = f"{function_name} ok: {result}"
+            except Exception as e:
+                log_message = f"{function_name} error: {type(e).__name__}. Inputs: {args}, {kwargs}"
+                raise  # пробрасываем исключение дальше
+            finally:
+                if filename:
+                    with open(filename, "a") as f:
+                        f.write(log_message + "\n")
+                else:
+                    print(log_message)
+            return result
+
+        return wrapper
+
+    return decorator
+```
+
+#### Пример использования декоратора
+
+```
+@log(filename="mylog.txt")
+def my_function(x, y):
+    """Функция суммирует 2 числа"""
+    return x + y
+
+my_function(4, 7)
+```
+
+**Результат**
+
+```
+my_function ok: 11
+```
+
+#### Пример функции с ошибкой, где на ноль делить нельзя
+
+```
+@log(filename="mylog.txt")
+def my_error_function(x, y):
+   return x / y
+
+ my_error_function(1, 0)
+```
+
+**Результат**
+
+```
+my_error_function error: ZeroDivisionError. Inputs: (1, 0), {}
+```
