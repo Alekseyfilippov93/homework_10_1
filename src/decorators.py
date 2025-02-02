@@ -1,11 +1,13 @@
 from functools import wraps
+from typing import Any, Callable, Optional
 
 
-def log(filename=None):
+def log(filename: Optional[str] = None) -> Callable:
     """Декоратор логирования функций, автоматически логирует начало и конец, и результаты и возникшие ошибки"""
-    def decorator(func):
+
+    def decorator(func: Callable) -> Callable:
         @wraps(func)
-        def wrapper(*args, **kwargs):
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
             function_name = func.__name__
             try:
                 result = func(*args, **kwargs)
@@ -27,20 +29,19 @@ def log(filename=None):
 
 
 # Пример использования декоратора
-#@log(filename="mylog.txt")
-#def my_function(x, y):
- #   """Функция суммирует 2 числа"""
- #   return x + y
+@log(filename="mylog.txt")
+def my_function(x, y):
+    """Функция суммирует 2 числа"""
+    return x + y
+
 
 # Успешный вызов проверка
-#my_function(4, 5)
+my_function(4, 7)
 
 
 # Пример функции с ошибкой, где на ноль делить нельзя
-#@log(filename="mylog.txt")
-#def my_error_function(x, y):
- #   return x / y
+# @log(filename="mylog.txt")
+# def my_error_function(x, y):
+#   return x / y
 
-#my_error_function(1, 0)
-
-
+# my_error_function(1, 0)

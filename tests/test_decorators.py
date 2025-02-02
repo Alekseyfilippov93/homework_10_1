@@ -4,12 +4,12 @@ from src.decorators import log
 
 # Создаем функции с применением нашего декоратора. Потом уже тестируем
 @log()
-def add(x, y):
+def add(x: int, y: int) -> int:
     return x + y
 
 
 @log()
-def divide(x, y):
+def divide(x: float, y: float) -> float:
     return x / y
 
 
