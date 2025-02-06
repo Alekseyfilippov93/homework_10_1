@@ -17,35 +17,35 @@ def test_filter_by_currency(transactions):
     [
         # кортеж данных для первого теста
         (
-                "USD",
-                [
-                    {
-                        "operationAmount": {"amount": "9824.07", "currency": {"name": "USD", "code": "USD"}},
-                        "description": "Перевод организации",
-                    },
-                    {
-                        "operationAmount": {"amount": "79114.93", "currency": {"name": "USD", "code": "USD"}},
-                        "description": "Перевод со счета на счет",
-                    },
-                    {
-                        "operationAmount": {"amount": "56883.54", "currency": {"name": "USD", "code": "USD"}},
-                        "description": "Перевод с карты на карту",
-                    },
-                ],
+            "USD",
+            [
+                {
+                    "operationAmount": {"amount": "9824.07", "currency": {"name": "USD", "code": "USD"}},
+                    "description": "Перевод организации",
+                },
+                {
+                    "operationAmount": {"amount": "79114.93", "currency": {"name": "USD", "code": "USD"}},
+                    "description": "Перевод со счета на счет",
+                },
+                {
+                    "operationAmount": {"amount": "56883.54", "currency": {"name": "USD", "code": "USD"}},
+                    "description": "Перевод с карты на карту",
+                },
+            ],
         ),
         # кортеж данных для второго теста
         (
-                "RUB",
-                [
-                    {
-                        "operationAmount": {"amount": "43318.34", "currency": {"name": "руб.", "code": "RUB"}},
-                        "description": "Перевод со счета на счет",
-                    },
-                    {
-                        "operationAmount": {"amount": "67314.70", "currency": {"name": "руб.", "code": "RUB"}},
-                        "description": "Перевод организации",
-                    },
-                ],
+            "RUB",
+            [
+                {
+                    "operationAmount": {"amount": "43318.34", "currency": {"name": "руб.", "code": "RUB"}},
+                    "description": "Перевод со счета на счет",
+                },
+                {
+                    "operationAmount": {"amount": "67314.70", "currency": {"name": "руб.", "code": "RUB"}},
+                    "description": "Перевод организации",
+                },
+            ],
         ),
         # кортеж данных для третьего теста
         ("EUR", []),

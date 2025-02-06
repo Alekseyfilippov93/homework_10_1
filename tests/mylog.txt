@@ -1,0 +1,31 @@
+my_function ok: 9
+my_error_function error: ZeroDivisionError. Inputs: (1, 0), {}
+my_function ok: 9
+my_error_function error: ZeroDivisionError. Inputs: (1, 0), {}
+my_function ok: 9
+my_error_function error: ZeroDivisionError. Inputs: (1, 0), {}
+my_function ok: 9
+my_error_function error: ZeroDivisionError. Inputs: (1, 0), {}
+my_function ok: 9
+my_error_function error: ZeroDivisionError. Inputs: (1, 0), {}
+my_function ok: 9
+my_error_function error: ZeroDivisionError. Inputs: (1, 0), {}
+my_function ok: 9
+my_error_function error: ZeroDivisionError. Inputs: (1, 0), {}
+my_function ok: 9
+my_error_function error: ZeroDivisionError. Inputs: (1, 0), {}
+my_function ok: 9
+my_error_function error: ZeroDivisionError. Inputs: (1, 0), {}
+my_function ok: 9
+my_error_function error: ZeroDivisionError. Inputs: (1, 0), {}
+my_function ok: 9
+my_error_function error: ZeroDivisionError. Inputs: (1, 0), {}
+my_function ok: 9
+my_error_function error: ZeroDivisionError. Inputs: (1, 0), {}
+my_function ok: 9
+my_error_function error: ZeroDivisionError. Inputs: (1, 0), {}
+my_function ok: 9
+my_error_function error: ZeroDivisionError. Inputs: (1, 0), {}
+my_function ok: 9
+my_error_function error: ZeroDivisionError. Inputs: (1, 0), {}
+my_function ok: 11
