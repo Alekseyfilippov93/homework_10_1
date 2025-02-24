@@ -1,21 +1,35 @@
 import json
 import os
 from config import DATA_DIR
+from typing import List, Dict, Any
 
 
-def load_operation_json(data_file):
+def load_operation_json(data_file: str) -> List[Dict[str, Any]]:
+    """Загружает данные из JSON-файла.
+    :param data_file: Имя файла с данными.
+    :return: Список словарей с данными, если файл существует и содержит список.
+             В противном случае возвращает пустой список.
+    """
     file_path = os.path.join(DATA_DIR, data_file)
+
+    # Проверяем, существует ли файл
     if not os.path.exists(file_path):
         return []
 
-    with open(file_path, encoding='utf-8') as file:
-        try:
+    # Открываем и читаем файл
+    try:
+        with open(file_path, "r", encoding="utf-8") as file:
             data = json.load(file)
+            # Проверяем, что данные являются списком
             if isinstance(data, list):
                 return data
             else:
                 return []
-        except json.JSONDecodeError:
-            return []
+    except (json.JSONDecodeError, OSError):
+        # Обрабатываем ошибки декодирования JSON и ошибки файловой системы
+        return []
 
-print(load_operation_json('operations.json', currency 'usd'))
+# transactions = load_operation_json("operations.json")
+#
+# # Выводим результат
+# print(transactions)
