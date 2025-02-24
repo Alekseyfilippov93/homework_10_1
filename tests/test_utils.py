@@ -7,7 +7,7 @@ def test_load_valid_json():
     Тест на успешную загрузку JSON-файла.
     """
     with patch("os.path.exists", return_value=True), patch(
-            "builtins.open", new_callable=mock_open, read_data='[{"id": 1, "amount": 100}]'
+        "builtins.open", new_callable=mock_open, read_data='[{"id": 1, "amount": 100}]'
     ):
         result = load_operation_json("operations.json")
         assert result == [{"id": 1, "amount": 100}]

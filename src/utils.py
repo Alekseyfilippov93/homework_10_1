@@ -26,8 +26,3 @@ def load_operation_json(data_file: str) -> List[Dict[str, Any]]:
     except (json.JSONDecodeError, OSError):
         # Обрабатываем ошибки декодирования JSON и ошибки файловой системы
         return []
-
-# transactions = load_operation_json("operations.json")
-#
-# # Выводим результат
-# print(transactions)
