@@ -5,10 +5,8 @@ from typing import List, Dict, Any
 
 
 def load_operation_json(data_file: str) -> List[Dict[str, Any]]:
-    """Загружает данные из JSON-файла.
-    :param data_file: Имя файла с данными.
-    :return: Список словарей с данными, если файл существует и содержит список.
-             В противном случае возвращает пустой список.
+    """
+    Загружает данные из JSON-файла.
     """
     file_path = os.path.join(DATA_DIR, data_file)
 
