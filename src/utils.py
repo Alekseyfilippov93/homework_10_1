@@ -15,11 +15,11 @@ if not os.path.exists(LOGS_DIR):
 
 # Настройка логера для модуля utils
 utils_logger = logging.getLogger('utils')
-utils_logger.setLevel(logging.DEBUG)  # Уровень логирования не меньше DEBUG
+utils_logger.setLevel(logging.DEBUG)
 
 # Настройка FileHandler для модуля utils
 log_file_path = os.path.join(LOGS_DIR, 'utils.log')  # Путь к файлу логов
-utils_file_handler = logging.FileHandler(log_file_path, mode='w')
+utils_file_handler = logging.FileHandler(log_file_path, mode='w')  # Перезаписывается каждый раз
 utils_file_handler.setLevel(logging.DEBUG)
 
 # Настройка форматера для модуля utils
@@ -29,9 +29,6 @@ utils_file_handler.setFormatter(utils_formatter)
 # Добавляем handler к логеру модуля utils
 utils_logger.addHandler(utils_file_handler)
 
-# Отладочное сообщение
-print(f"Логер для модуля utils настроен. Логи будут записаны в {log_file_path}")
-
 
 def load_operation_json(data_file: str) -> List[Dict[str, Any]]:
     """
@@ -39,7 +36,7 @@ def load_operation_json(data_file: str) -> List[Dict[str, Any]]:
     """
     file_path = os.path.join(DATA_DIR, data_file)
 
-    # Логируем начало выполнения функции
+    # Логируем начало
     utils_logger.debug(f"Начало загрузки данных из файла: {file_path}")
 
     # Проверяем, существует ли файл
@@ -59,10 +56,10 @@ def load_operation_json(data_file: str) -> List[Dict[str, Any]]:
                 utils_logger.error(f"Данные в файле {file_path} не являются списком")
                 return []
     except json.JSONDecodeError as e:
-        # Логируем ошибку декодирования JSON
+        # Логируем ошибку
         utils_logger.error(f"Ошибка декодирования JSON в файле {file_path}: {e}")
         return []
     except OSError as e:
-        # Логируем ошибку файловой системы
+        # Логируем ошибку системы
         utils_logger.error(f"Ошибка файловой системы при работе с файлом {file_path}: {e}")
         return []

@@ -27,9 +27,6 @@ masks_file_handler.setFormatter(masks_formatter)
 # Добавляем handler к логеру модуля masks
 masks_logger.addHandler(masks_file_handler)
 
-# Отладочное сообщение
-print(f"Логер для модуля masks настроен. Логи будут записаны в {log_file_path}")
-
 
 # Функция, принимающая номер карты, и возвращающая ее маску
 def get_mask_card_number(numbers: Union[str]) -> Union[str]:
@@ -63,12 +60,3 @@ def get_mask_account(mask_account: Union[str]) -> Union[str]:
     masked_account = "**" + mask_account[-4:]
     masks_logger.debug(f"Маскированный номер счета: {masked_account}")
     return masked_account
-
-
-if __name__ == "__main__":
-    # Пример использования функций
-    try:
-        print(get_mask_card_number("6468647367889477"))
-        print(get_mask_account("64686473678894779589"))
-    except ValueError as e:
-        masks_logger.error(f"Ошибка в main: {e}")
