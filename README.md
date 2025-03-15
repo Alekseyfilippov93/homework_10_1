@@ -385,3 +385,5 @@ def my_error_function(x, y):
 ```
 my_error_function error: ZeroDivisionError. Inputs: (1, 0), {}
 ```
+## Модуль reading_financial_transactions
+Этот модуль предоставляет функции для чтения финансовых операций из CSV- и Excel-файлов.

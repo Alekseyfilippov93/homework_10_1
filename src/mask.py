@@ -4,7 +4,7 @@ from typing import Union
 
 # Определяем корневую папку проекта
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # Переход на уровень выше src
-LOGS_DIR = os.path.join(PROJECT_ROOT, 'logs')  # Путь к папке logs в корне проекта
+LOGS_DIR = os.path.join(PROJECT_ROOT, "logs")  # Путь к папке logs в корне проекта
 
 # Создаем папку logs, если она не существует
 if not os.path.exists(LOGS_DIR):
@@ -12,16 +12,16 @@ if not os.path.exists(LOGS_DIR):
     os.makedirs(LOGS_DIR)
 
 # Настройка логера для модуля masks
-masks_logger = logging.getLogger('masks')
+masks_logger = logging.getLogger("masks")
 masks_logger.setLevel(logging.DEBUG)  # Уровень логирования не меньше DEBUG
 
 # Настройка FileHandler для модуля masks
-log_file_path = os.path.join(LOGS_DIR, 'masks.log')  # Путь к файлу логов
-masks_file_handler = logging.FileHandler(log_file_path, mode='w')
+log_file_path = os.path.join(LOGS_DIR, "masks.log")  # Путь к файлу логов
+masks_file_handler = logging.FileHandler(log_file_path, mode="w")
 masks_file_handler.setLevel(logging.DEBUG)
 
 # Настройка форматера для модуля masks
-masks_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+masks_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 masks_file_handler.setFormatter(masks_formatter)
 
 # Добавляем handler к логеру модуля masks
