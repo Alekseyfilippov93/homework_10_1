@@ -16,7 +16,7 @@ def filter_transactions_by_description(transactions: List[Dict], search_string: 
     except re.error:
         return []
 
-    return [t for t in transactions if 'description' in t and pattern.search(t['description'])]
+    return [t for t in transactions if "description" in t and pattern.search(t["description"])]
 
 
 def count_transactions_by_category(transactions: List[Dict], categories: List[str]) -> Dict[str, int]:
@@ -30,17 +30,17 @@ def count_transactions_by_category(transactions: List[Dict], categories: List[st
     # Собираем все описания, которые содержат хотя бы одну из категорий
     descriptions = []
     for t in transactions:
-        if 'description' in t:
-            desc_lower = t['description'].lower()
+        if "description" in t:
+            desc_lower = t["description"].lower()
             if any(cat.lower() in desc_lower for cat in categories):
-                descriptions.append(t['description'])
+                descriptions.append(t["description"])
 
     # Используем Counter для подсчета
     category_counter = Counter()
 
     for desc in descriptions:
         for category in categories:
-            if re.search(r'\b' + re.escape(category.lower()) + r'\b', desc.lower()):
+            if re.search(r"\b" + re.escape(category.lower()) + r"\b", desc.lower()):
                 category_counter[category] += 1
 
     return dict(category_counter)
