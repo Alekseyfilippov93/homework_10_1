@@ -6,7 +6,7 @@ from typing import List, Dict
 def filter_transactions_by_description(transactions: List[Dict], search_string: str) -> List[Dict]:
     """Фильтрует транзакции по наличию строки в описании с использованием регулярных выражений.
     transactions: Список словарей с данными о транзакциях
-    search_string: Строка для поиска в описании (регулярное выражение)
+    search_string: Строка для поиска в описании.
     """
     if not transactions or not search_string:
         return []
