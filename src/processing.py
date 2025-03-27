@@ -4,8 +4,9 @@ def filter_by_state(list_dict: list, state: str = "EXECUTED") -> list:
     На выходе получаем новый список"""
     new_list_dict = []
     # Проверяем есть такой ключ у нас в словаре
+    state_lower = state.lower()
     for item in list_dict:
-        if item.get("state") == state:
+        if isinstance(item.get("state"), str) and item.get("state").lower() == state_lower:
             new_list_dict.append(item)
     return new_list_dict
 
